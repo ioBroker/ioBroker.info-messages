@@ -83,7 +83,7 @@ function checkAndDeleteIfExist(sftp, fileName, cb) {
     });
 }
 
-gulp.task('deploy', () => {
+gulp.task('default', () => {
     const news = require('./news.json'); // it will check if the json has valid structure too
 
     return uploadOneFile('/news.json', JSON.stringify(news));
