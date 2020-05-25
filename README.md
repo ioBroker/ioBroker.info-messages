@@ -26,3 +26,7 @@
   - **smaller(x.x.x)** - Adapter version is smaller than (example: "fronius": "smaller(1.2.2)")
   - **equals(x.x.x)** - Adapter has exactly the same version (example: "cloud": "equals(0.2.2)")
   - **between(x.x.x,y.y.y)** - The version of the adapter is between x and y or equal to x or y (example: "tankerkoenig": "between(1.0.5,2.0.4)")
+
+## How to see messages
+
+Visit: [https://iobroker.github.io/ioBroker.info-messages/](https://iobroker.github.io/ioBroker.info-messages/)
