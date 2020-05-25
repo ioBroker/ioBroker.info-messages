@@ -1,6 +1,8 @@
 'use strict';
 
 const gulp   = require('gulp');
+const del    = require('del');
+const fs     = require('fs');
 const Stream = require('stream');
 const Client = require('ssh2').Client;
 
@@ -82,6 +84,31 @@ function checkAndDeleteIfExist(sftp, fileName, cb) {
         }
     });
 }
+
+gulp.task('build', () => new Promise(resolve => {
+    const { exec } = require('child_process');
+
+    if (!fs.existsSync(__dirname + '/frontend/node_modules')) {
+        const child = exec('npm install', {stdio: [process.stdin, process.stdout, process.stderr], cwd: __dirname + '/frontend'});
+        child.on('exit', (code, signal) => {
+            const child_ = exec('npm run build', {stdio: [process.stdin, process.stdout, process.stderr], cwd: __dirname + '/frontend'});
+            child_.on('exit', (code, signal) => resolve());
+        });
+    } else {
+        const child = exec('npm run build', {stdio: [process.stdin, process.stdout, process.stderr], cwd: __dirname + '/frontend'});
+        child.on('exit', (code, signal) => resolve());
+    }
+}));
+
+gulp.task('clean', () =>
+    del(['docs/*/**', 'docs/*']));
+
+gulp.task('copy', () => {
+    return gulp.src(['frontend/build/*/**', 'frontend/build/*'])
+        .pipe(gulp.dest('docs/'));
+});
+
+gulp.task('frontend', gulp.series('clean', 'build', 'copy'));
 
 gulp.task('default', () => {
     const news = require('./news.json'); // it will check if the json has valid structure too
