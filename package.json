@@ -9,10 +9,13 @@
     "engines": {
         "node": ">=12"
     },
-    "homepage": "http://iobroker.net",
+    "homepage": "http://ioBroker.github.io/ioBroker.info-messages",
     "description": "Official news for ioBroker.admin",
     "scripts": {
-        "deploy": "node node_modules/gulp/bin/gulp"
+        "deploy": "node node_modules/gulp/bin/gulp",
+        "frontend": "node node_modules/gulp/bin/gulp frontend",
+        "predeploy": "npm run frontend",
+        "deployFrontend": "node node_modules/gh-pages/bin/gh-pages.js -d frontend/build"
     },
     "bugs": {
         "url": "https://github.com/ioBroker/ioBroker.info-messages/issues"
@@ -30,6 +33,7 @@
     "devDependencies": {
         "gulp": "^4.0.2",
         "ssh2": "^0.8.9",
-        "del": "^5.1.0"
+        "del": "^5.1.0",
+        "gh-pages": "^2.2.0"
     }
 }
