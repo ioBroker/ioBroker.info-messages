@@ -28,6 +28,7 @@
         "bluefox <dogafox@gmail.com>"
     ],
     "devDependencies": {
-        "gulp": "^4.0.2"
+        "gulp": "^4.0.2",
+        "ssh2": "^0.8.9"
     }
 }

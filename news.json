@@ -1219,7 +1219,6 @@
         "fa-icon": "exclamation-circle",
         "created": "2020-05-25T00:00:00.000Z",
         "repo": "latest",
-        
         "conditions": {
             "javascript": "smaller(4.6.0)"
         }
