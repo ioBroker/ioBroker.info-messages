@@ -108,7 +108,7 @@ gulp.task('copy', () => {
         .pipe(gulp.dest('docs/'));
 });
 
-gulp.task('frontend', gulp.series('clean', 'build', 'copy'));
+gulp.task('frontend', gulp.series('build'));
 
 gulp.task('default', () => {
     const news = require('./news.json'); // it will check if the json has valid structure too
